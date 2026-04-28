@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/278245245517908533/ee6dafba823b4cf9a444db1ec41bfadf/artifacts
+end_time: 1777415559938
+entry_point_name: ''
+experiment_id: '278245245517908533'
+lifecycle_stage: active
+run_id: ee6dafba823b4cf9a444db1ec41bfadf
+run_name: train_20260429_033236
+run_uuid: ee6dafba823b4cf9a444db1ec41bfadf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777415556206
+status: 3
+tags: []
+user_id: zaina

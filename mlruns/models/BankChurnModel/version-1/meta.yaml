@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1777404720987
+current_stage: None
+description: ''
+last_updated_timestamp: 1777404720987
+name: BankChurnModel
+run_id: c8f46c966e4d49dfba9e8b8c3d345815
+run_link: ''
+source: mlflow-artifacts:/278245245517908533/c8f46c966e4d49dfba9e8b8c3d345815/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/278245245517908533/c8f46c966e4d49dfba9e8b8c3d345815/artifacts/model
+user_id: null
+version: 1

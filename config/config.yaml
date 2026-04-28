@@ -1,0 +1,116 @@
+project: 
+  name: "bank_churn_mlops" 
+  environment: "dev" 
+  random_state: 42 
+
+data: 
+  raw_path: "data/bank.csv" 
+  processed_path: "data/processed.csv" 
+  test_size: 0.2 
+  target_column: "churn" 
+
+features: 
+  feature_store_path: "feature_store/" 
+  save_engineered_features: true 
+  versioning: true 
+
+model: 
+  name: "RandomForest" 
+  base_params: 
+    n_estimators: 200 
+    max_depth: 10 
+  tuning: 
+    enabled: true 
+    cv_folds: 3 
+    scoring: "f1" 
+    param_grid: 
+      n_estimators: [100, 200, 300] 
+      max_depth: [5, 10, 15] 
+
+paths: 
+  models: "models/" 
+  pipeline_path: "models/pipeline.pkl" 
+  logs: "logs/" 
+  artifacts: "artifacts/" 
+
+mlflow: 
+  tracking_uri: "http://localhost:5000"  
+  artifact_uri: "file:///home/runner/work/churn_mlops_project/churn_mlops_project/mlflow_artifacts"  
+  experiment_name: bank_churn_prediction_model" 
+
+api: 
+  host: "0.0.0.0" 
+  port: 8000 
+
+monitoring: 
+  prometheus_port: 8001 
+  drift_report_path: "monitoring/drift_report.html" 
+  enable_drift_detection: true 
+
+# ----------------------------
+# VALIDATION (UPDATED FOR YOUR DATASET)
+# ----------------------------
+validation: 
+  enabled: true 
+  expectation_suite: "churn_suite.json" 
+
+  numeric: 
+    credit_score: 
+      min: 300 
+      max: 900 
+
+    age: 
+      min: 0 
+      max: 100 
+
+    tenure: 
+      min: 0 
+      max: 100 
+
+    balance: 
+      min: 0 
+      max: 2000000 
+
+    products_number: 
+      min: 1 
+      max: 10 
+
+    estimated_salary: 
+      min: 0 
+      max: 1000000 
+
+  categorical: 
+    gender: 
+      - Male 
+      - Female 
+
+    country: 
+      - France 
+      - Spain 
+      - Germany 
+
+    credit_card: 
+      - 0 
+      - 1 
+
+    active_member: 
+      - 0 
+      - 1 
+
+  target: 
+    churn: 
+      - 0 
+      - 1 
+
+  not_null: 
+    - credit_score 
+    - country 
+    - gender 
+    - age 
+    - tenure 
+    - balance 
+    - products_number 
+    - credit_card 
+    - active_member 
+    - estimated_salary 
+    - churn

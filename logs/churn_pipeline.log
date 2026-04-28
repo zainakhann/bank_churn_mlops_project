@@ -1,0 +1,113 @@
+2026-04-29 00:20:29,889 INFO Config loaded successfully
+2026-04-29 00:21:39,478 INFO Config loaded successfully
+2026-04-29 00:21:39,499 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 00:21:39,499 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 00:21:39,617 INFO Config loaded successfully
+2026-04-29 00:21:39,622 INFO ===== TRAINING STARTED =====
+2026-04-29 00:21:39,637 WARNING Retrying (Retry(total=4, connect=4, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/experiments/get-by-name?experiment_name=churn_prediction_model
+2026-04-29 00:21:44,153 WARNING Retrying (Retry(total=3, connect=3, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/experiments/get-by-name?experiment_name=churn_prediction_model
+2026-04-29 00:21:55,131 WARNING Retrying (Retry(total=2, connect=2, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/experiments/get-by-name?experiment_name=churn_prediction_model
+2026-04-29 00:22:11,539 WARNING Retrying (Retry(total=1, connect=1, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/experiments/get-by-name?experiment_name=churn_prediction_model
+2026-04-29 00:22:47,381 WARNING Retrying (Retry(total=0, connect=0, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [Errno 111] Connection refused")': /api/2.0/mlflow/experiments/get-by-name?experiment_name=churn_prediction_model
+2026-04-29 00:25:08,915 INFO Config loaded successfully
+2026-04-29 00:25:08,935 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 00:25:08,936 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 00:25:09,040 INFO Config loaded successfully
+2026-04-29 00:25:09,046 INFO ===== TRAINING STARTED =====
+2026-04-29 00:25:09,163 INFO Data loaded from data/bank.csv, shape: (10000, 12)
+2026-04-29 00:25:09,171 INFO Missing values handled + bank churn preprocessing applied
+2026-04-29 00:25:09,171 INFO Data Loaded: (10000, 11)
+2026-04-29 00:25:09,171 INFO Starting feature engineering...
+2026-04-29 00:25:09,181 INFO Feature engineering completed. Added features: ['BalanceToScoreRatio', 'SalaryToBalanceRatio', 'ActivityScore', 'AgeGroup', 'BalanceGroup', 'CreditScoreGroup']
+2026-04-29 00:25:09,181 INFO New DataFrame shape: (10000, 17)
+2026-04-29 00:28:50,052 INFO Config loaded successfully
+2026-04-29 00:28:50,070 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 00:28:50,071 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 00:28:50,175 INFO Config loaded successfully
+2026-04-29 00:28:50,181 INFO ===== TRAINING STARTED =====
+2026-04-29 00:28:50,276 INFO Data loaded from data/bank.csv, shape: (10000, 12)
+2026-04-29 00:28:50,285 INFO Missing values handled + bank churn preprocessing applied
+2026-04-29 00:28:50,285 INFO Data Loaded: (10000, 11)
+2026-04-29 00:28:50,285 INFO Starting feature engineering...
+2026-04-29 00:28:50,294 INFO Feature engineering completed. Added features: ['BalanceToScoreRatio', 'SalaryToBalanceRatio', 'ActivityScore', 'AgeGroup', 'BalanceGroup', 'CreditScoreGroup']
+2026-04-29 00:28:50,294 INFO New DataFrame shape: (10000, 17)
+2026-04-29 00:31:57,105 INFO Config loaded successfully
+2026-04-29 00:31:57,123 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 00:31:57,123 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 00:31:57,227 INFO Config loaded successfully
+2026-04-29 00:31:57,232 INFO ===== TRAINING STARTED =====
+2026-04-29 00:31:57,331 INFO Data loaded from data/bank.csv, shape: (10000, 12)
+2026-04-29 00:31:57,339 INFO Missing values handled + bank churn preprocessing applied
+2026-04-29 00:31:57,340 INFO Data Loaded: (10000, 11)
+2026-04-29 00:31:57,340 INFO Starting feature engineering...
+2026-04-29 00:31:57,349 INFO Feature engineering completed. Added features: ['BalanceToScoreRatio', 'SalaryToBalanceRatio', 'ActivityScore', 'AgeGroup', 'BalanceGroup', 'CreditScoreGroup']
+2026-04-29 00:31:57,349 INFO New DataFrame shape: (10000, 17)
+2026-04-29 00:31:57,355 INFO Features saved: (10000, 17)
+2026-04-29 00:31:57,356 INFO Splitting data: test_size=0.2, random_state=42
+2026-04-29 00:31:57,360 INFO Split done: (8000, 16), (2000, 16)
+2026-04-29 00:31:57,361 INFO Building model pipeline (Bank Churn dataset)...
+2026-04-29 00:31:57,361 INFO Pipeline built successfully ✅
+2026-04-29 00:31:58,289 INFO Accuracy: 0.8375
+2026-04-29 00:31:58,461 INFO Model saved: models/model.pkl
+2026-04-29 00:32:00,990 INFO Model registered successfully
+2026-04-29 00:32:00,998 INFO ===== TRAINING COMPLETED =====
+2026-04-29 03:32:36,003 INFO Config loaded successfully
+2026-04-29 03:32:36,021 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 03:32:36,021 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 03:32:36,127 INFO Config loaded successfully
+2026-04-29 03:32:36,132 INFO ===== TRAINING STARTED =====
+2026-04-29 03:32:36,230 INFO Data loaded from data/bank.csv, shape: (10000, 12)
+2026-04-29 03:32:36,243 INFO Missing values handled + bank churn preprocessing applied
+2026-04-29 03:32:36,243 INFO Data Loaded: (10000, 11)
+2026-04-29 03:32:36,243 INFO Starting feature engineering...
+2026-04-29 03:32:36,256 INFO Feature engineering completed. Added features: ['BalanceToScoreRatio', 'SalaryToBalanceRatio', 'ActivityScore', 'AgeGroup', 'BalanceGroup', 'CreditScoreGroup']
+2026-04-29 03:32:36,256 INFO New DataFrame shape: (10000, 17)
+2026-04-29 03:32:36,262 INFO Features saved: (10000, 17)
+2026-04-29 03:32:36,264 INFO Splitting data: test_size=0.2, random_state=42
+2026-04-29 03:32:36,270 INFO Split done: (8000, 16), (2000, 16)
+2026-04-29 03:32:36,270 INFO Building model pipeline (Bank Churn dataset)...
+2026-04-29 03:32:36,270 INFO Pipeline built successfully ✅
+2026-04-29 03:32:37,209 INFO Accuracy: 0.8375
+2026-04-29 03:32:37,395 INFO Model saved: models/model.pkl
+2026-04-29 03:32:39,924 INFO Model registered successfully
+2026-04-29 03:32:39,938 INFO ===== TRAINING COMPLETED =====
+2026-04-29 03:33:41,656 INFO Config loaded successfully
+2026-04-29 03:33:41,668 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 03:33:41,668 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 03:33:41,729 INFO Config loaded successfully
+2026-04-29 03:33:41,736 INFO ===== TRAINING STARTED =====
+2026-04-29 03:33:41,846 INFO Data loaded from data/bank.csv, shape: (10000, 12)
+2026-04-29 03:33:41,855 INFO Missing values handled + bank churn preprocessing applied
+2026-04-29 03:33:41,856 INFO Data Loaded: (10000, 11)
+2026-04-29 03:33:41,856 INFO Starting feature engineering...
+2026-04-29 03:33:41,870 INFO Feature engineering completed. Added features: ['BalanceToScoreRatio', 'SalaryToBalanceRatio', 'ActivityScore', 'AgeGroup', 'BalanceGroup', 'CreditScoreGroup']
+2026-04-29 03:33:41,870 INFO New DataFrame shape: (10000, 17)
+2026-04-29 03:33:41,877 INFO Features saved: (10000, 17)
+2026-04-29 03:33:41,879 INFO Splitting data: test_size=0.2, random_state=42
+2026-04-29 03:33:41,884 INFO Split done: (8000, 16), (2000, 16)
+2026-04-29 03:33:41,884 INFO Building model pipeline (Bank Churn dataset)...
+2026-04-29 03:33:41,884 INFO Pipeline built successfully ✅
+2026-04-29 03:33:42,909 INFO Accuracy: 0.8375
+2026-04-29 03:33:43,110 INFO Model saved: models/model.pkl
+2026-04-29 03:33:45,979 INFO Model registered successfully
+2026-04-29 03:33:45,992 INFO ===== TRAINING COMPLETED =====
+2026-04-29 03:36:23,574 INFO Config loaded successfully
+2026-04-29 03:36:23,584 INFO Numeric features: ['credit_score', 'age', 'tenure', 'balance', 'products_number', 'estimated_salary']
+2026-04-29 03:36:23,584 INFO Categorical features: ['country', 'gender', 'credit_card', 'active_member']
+2026-04-29 03:36:23,635 INFO Config loaded successfully
+2026-04-29 03:36:23,640 INFO ===== TRAINING STARTED =====
+2026-04-29 03:36:23,713 INFO Data loaded from data/bank.csv, shape: (10000, 12)
+2026-04-29 03:36:23,720 INFO Missing values handled + bank churn preprocessing applied
+2026-04-29 03:36:23,721 INFO Data Loaded: (10000, 11)
+2026-04-29 03:36:23,721 INFO Starting feature engineering...
+2026-04-29 03:36:23,730 INFO Feature engineering completed. Added features: ['BalanceToScoreRatio', 'SalaryToBalanceRatio', 'ActivityScore', 'AgeGroup', 'BalanceGroup', 'CreditScoreGroup']
+2026-04-29 03:36:23,730 INFO New DataFrame shape: (10000, 17)
+2026-04-29 03:36:23,735 INFO Features saved: (10000, 17)
+2026-04-29 03:36:23,737 INFO Splitting data: test_size=0.2, random_state=42
+2026-04-29 03:36:23,740 INFO Split done: (8000, 16), (2000, 16)
+2026-04-29 03:36:23,740 INFO Building model pipeline (Bank Churn dataset)...
+2026-04-29 03:36:23,740 INFO Pipeline built successfully ✅
+2026-04-29 03:36:24,726 INFO Accuracy: 0.8375
+2026-04-29 03:36:24,924 INFO Model saved: models/model.pkl
+2026-04-29 03:36:28,410 INFO Model registered successfully
+2026-04-29 03:36:28,423 INFO ===== TRAINING COMPLETED =====
