@@ -1,6 +1,8 @@
 .venv/
-venv/
 __pycache__/
+mlruns/
+*.pkl
 *.pyc
-models/
+logs/
+.env
 
