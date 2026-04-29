@@ -1,3 +1,4 @@
+#config.yaml
 project: 
   name: "bank_churn_mlops" 
   environment: "dev" 
