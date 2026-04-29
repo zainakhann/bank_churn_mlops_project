@@ -49,22 +49,11 @@ TARGET_COL = config["data"]["target_column"]
 TEST_SIZE = config["data"]["test_size"]
 RANDOM_STATE = config["project"]["random_state"]
 
-
-# ----------------------------
-# Load data temporarily to detect features
-# ----------------------------
-df_temp = pd.read_csv(DATA_PATH)
+PIPELINE_PATH = config["paths"]["pipeline_path"]
 
 
 # ----------------------------
-# FIX: Drop ID column if present
-# ----------------------------
-if "customer_id" in df_temp.columns:
-    df_temp = df_temp.drop(columns=["customer_id"])
-
-
-# ----------------------------
-# Define numeric features (bank dataset)
+# Feature definitions (fallback safe)
 # ----------------------------
 DEFAULT_NUMERIC = [
     "credit_score",
@@ -75,16 +64,6 @@ DEFAULT_NUMERIC = [
     "estimated_salary"
 ]
 
-FEATURES_NUMERIC = config["data"].get("numeric_features") or DEFAULT_NUMERIC
-
-# Ensure no target leakage
-if TARGET_COL in FEATURES_NUMERIC:
-    FEATURES_NUMERIC.remove(TARGET_COL)
-
-
-# ----------------------------
-# Define categorical features
-# ----------------------------
 DEFAULT_CATEGORICAL = [
     "country",
     "gender",
@@ -92,13 +71,17 @@ DEFAULT_CATEGORICAL = [
     "active_member"
 ]
 
+FEATURES_NUMERIC = config["data"].get("numeric_features") or DEFAULT_NUMERIC
 FEATURES_CATEGORICAL = config["data"].get("categorical_features") or DEFAULT_CATEGORICAL
+
+
+# Remove target leakage if present
+if TARGET_COL in FEATURES_NUMERIC:
+    FEATURES_NUMERIC.remove(TARGET_COL)
 
 if TARGET_COL in FEATURES_CATEGORICAL:
     FEATURES_CATEGORICAL.remove(TARGET_COL)
 
-
-PIPELINE_PATH = config["paths"]["pipeline_path"]
 
 logging.info(f"Numeric features: {FEATURES_NUMERIC}")
 logging.info(f"Categorical features: {FEATURES_CATEGORICAL}")
@@ -109,39 +92,31 @@ logging.info(f"Categorical features: {FEATURES_CATEGORICAL}")
 # ----------------------------
 def load_data(path: str = DATA_PATH) -> pd.DataFrame:
     """
-    Load CSV data and handle missing values only.
+    Load CSV data and handle missing values safely.
     """
     df = pd.read_csv(path)
     logging.info(f"Data loaded from {path}, shape: {df.shape}")
 
-    # ----------------------------
-    # FIX 1: Drop ID column
-    # ----------------------------
+    # Drop ID column
     if "customer_id" in df.columns:
         df.drop("customer_id", axis=1, inplace=True)
 
-    # ----------------------------
-    # FIX 2: Ensure numeric safety
-    # ----------------------------
+    # Handle numeric columns
     for col in FEATURES_NUMERIC:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
             df[col] = df[col].fillna(df[col].median())
 
-    # ----------------------------
-    # FIX 3: Handle categorical missing values
-    # ----------------------------
+    # Handle categorical columns
     for col in FEATURES_CATEGORICAL:
         if col in df.columns:
             df[col] = df[col].fillna(df[col].mode()[0])
 
-    # ----------------------------
-    # FIX 4: Encode target (bank churn already 0/1)
-    # ----------------------------
+    # Ensure target is integer (0/1)
     if TARGET_COL in df.columns:
         df[TARGET_COL] = df[TARGET_COL].astype(int)
 
-    logging.info("Missing values handled + bank churn preprocessing applied")
+    logging.info("Missing values handled + preprocessing applied")
 
     return df
 
@@ -156,7 +131,7 @@ def split_data(
     random_state: int = RANDOM_STATE
 ):
     """
-    Split dataset into train/test.
+    Split dataset into train/test sets.
     """
     if target not in df.columns:
         raise ValueError(f"Target column '{target}' not found")
@@ -191,7 +166,7 @@ def load_pipeline(path: str = PIPELINE_PATH):
 
 
 # ----------------------------
-# Self-test
+# Self-test (safe)
 # ----------------------------
 if __name__ == "__main__":
     print("Running utils test...")
