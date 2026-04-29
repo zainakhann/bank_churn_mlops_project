@@ -207,7 +207,7 @@ def main():
 
         mlflow.log_param("git_commit", get_git_commit_hash())
 
-        mlflow.sklearn.log_model(pipeline, "model")
+        logging.info("MLflow model logging skipped")
 
         mlflow.log_artifact(latest_model, artifact_path="model")
         mlflow.log_artifact(feature_path, artifact_path="features")
@@ -215,14 +215,10 @@ def main():
         # ===========================
         # Register Model
         # ===========================
-        client = MlflowClient()
-
-        mlflow.register_model(
-            f"runs:/{mlflow.active_run().info.run_id}/model",
-            "BankChurnModel"
-        )
-
-        logging.info("Model registered successfully")
+        # ===========================
+        # Skip registry in local/CI mode
+        # ===========================
+        logging.info("Model registry skipped in local/CI mode")
 
         # ===========================
         # Metadata
