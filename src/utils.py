@@ -7,9 +7,9 @@ from dotenv import load_dotenv
 import yaml
 
 
-# ----------------------------
+# ---------------------------
 # Load environment variables / secrets
-# ----------------------------
+# ---------------------------
 load_dotenv(dotenv_path="secrets/.env")
 
 
