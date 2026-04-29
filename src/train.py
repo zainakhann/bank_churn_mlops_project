@@ -118,6 +118,9 @@ def main():
     else:
         mlflow.set_tracking_uri(MLFLOW_URI)
 
+    if mlflow.get_experiment_by_name(EXPERIMENT_NAME) is None:
+        mlflow.create_experiment(EXPERIMENT_NAME)
+
     mlflow.set_experiment(EXPERIMENT_NAME)
 
     with mlflow.start_run(run_name=f"train_{timestamp}"):
@@ -188,9 +191,13 @@ def main():
         joblib.dump(pipeline, timestamped_model)
         joblib.dump(pipeline, latest_model)
 
+        joblib.dump(pipeline, os.path.join(MODEL_PATH, "model.pkl"))
+
+
         logging.info(f"Model saved: {latest_model}")
 
         # ===========================
+        
         # MLflow logging
         # ===========================
         mlflow.log_metric("accuracy", acc)
